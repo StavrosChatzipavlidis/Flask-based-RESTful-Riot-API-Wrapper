@@ -3,13 +3,22 @@ Flask application that integrates with Riot's RESTful API to retrieve the match 
 
 # Project Structure
 
-├───api-data-retrieval
-│       get_match_data.ipynb
-│       get_match_ids_data_recursive.ipynb
-│       get_summoner_data.ipynb
-│
-├───data-processing
-│       index_data.ipynb
-│       parsing-data.ipynb
-│
-└───depedencies
+- project/
+  - api_data_retrieval/
+    - get_summoner_data.py
+    - get_match_ids.py
+    - get_match_data.py
+    - ...
+  - data_processing/
+    - index_data.py
+    - clean_data.py
+    - ...
+  - flask_app/
+    - app.py
+    - templates/
+      - index.html
+      - ...
+    - static/
+      - style.css
+      - ...
+- README.md
