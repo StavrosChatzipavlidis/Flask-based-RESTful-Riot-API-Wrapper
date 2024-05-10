@@ -37,8 +37,6 @@ root/
 
 # TFT Summoner Data Retrieval
 
-These scripts fetches data related to League of Legends (LoL) summoners using the Riot Games API.
-
 ## Getting Started
 
 Before running the script, ensure you have an API key from Riot Games. Do not share this API key with anyone.
