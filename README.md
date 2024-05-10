@@ -13,6 +13,7 @@ Flask application that integrates with Riot's RESTful API to retrieve the match 
     - parsing-data.py
   - flask-app/
     - app.py
+    - automate_process.py
     - templates/
       - index.html
       - formatted_output.html
