@@ -234,6 +234,14 @@ In this section, we chain together a series of functions to automate the process
 
 ## Automating Match Data Retrieval and Processing
 
+The `automate_process` function orchestrates the retrieval of summoner data, match IDs, and match data. It operates in the following steps:
+1. **Fetching Summoner Data**: Utilizes the `get_summoner_data` function to retrieve summoner data using the summoner's name. This data includes the summoner's PUUID (Portable Unique ID).
+2. **Fetching Match IDs**: Calls the `get_match_ids` function with the summoner's PUUID to retrieve a list of match IDs corresponding to the summoner's recent matches.
+3. **Fetching Match Data**: Iterates through the retrieved match IDs (limited to the last 20 matches) and collects match data for each match ID using the `get_match_data` function.
+4. **Extracting Participant Data**: Within each match, identifies the specific participant (the summoner) using their PUUID and retrieves relevant data such as placement, units, traits, and items.
+
+By chaining these functions together, we streamline the process of gathering and presenting relevant data for analysis or display in a Flask application. This approach enhances code modularity, readability, and maintainability.
+
 ```python
 def automate_process(summoner_name):
     # Fetch summoner data using their name
@@ -304,13 +312,12 @@ def automate_process(summoner_name):
                         })
 ```
 
-The `automate_process` function orchestrates the retrieval of summoner data, match IDs, and match data. It operates in the following steps:
-1. **Fetching Summoner Data**: Utilizes the `get_summoner_data` function to retrieve summoner data using the summoner's name. This data includes the summoner's PUUID (Portable Unique ID).
-2. **Fetching Match IDs**: Calls the `get_match_ids` function with the summoner's PUUID to retrieve a list of match IDs corresponding to the summoner's recent matches.
-3. **Fetching Match Data**: Iterates through the retrieved match IDs (limited to the last 20 matches) and collects match data for each match ID using the `get_match_data` function.
-4. **Extracting Participant Data**: Within each match, identifies the specific participant (the summoner) using their PUUID and retrieves relevant data such as placement, units, traits, and items.
-
 ## Format Output
+
+The `format_output` function takes the processed match data and formats it into a readable output. It performs the following tasks:
+1. **Formatting Match Details**: Constructs a formatted string containing details such as summoner name, match ID, placement, and used augments.
+2. **Formatting Active Traits**: Extracts active traits and their respective tiers, then formats them into a readable list.
+3. **Formatting Units and Items**: Formats information about the units controlled by the summoner, including their tiers and equipped items.
 
 ```python
 def format_output(result, summoner_name, match_id):
@@ -359,13 +366,6 @@ def format_output(result, summoner_name, match_id):
         return formatted_output
 ```
 
-The `format_output` function takes the processed match data and formats it into a readable output. It performs the following tasks:
-1. **Formatting Match Details**: Constructs a formatted string containing details such as summoner name, match ID, placement, and used augments.
-2. **Formatting Active Traits**: Extracts active traits and their respective tiers, then formats them into a readable list.
-3. **Formatting Units and Items**: Formats information about the units controlled by the summoner, including their tiers and equipped items.
-
-By chaining these functions together, we streamline the process of gathering and presenting relevant data for analysis or display in a Flask application. This approach enhances code modularity, readability, and maintainability.
-
 # Flask Application: Visualizing Summoner Match Data
 
 This Flask application serves as a tool for visualizing match data for a given summoner in the game. The application allows users to input a summoner name, retrieves their match data, and presents it in a visually appealing format.
@@ -382,13 +382,15 @@ def index():
     return render_template('index.html')
 ```
 
+This route handles requests to the root URL and renders the index.html template, which contains a form for submitting summoner names.
+
 ```python
 @app.route('/submit_summoner_name', methods=['POST'])
 def submit_summoner_name():
     summoner_name = request.form.get('summoner_name').replace(' ', '%20')
-    """This route handles form submissions, retrieves the summoner name entered by the user, and replaces spaces with %20 to format it appropriately for the Riot Games API."""
+    #This route handles form submissions, retrieves the summoner name entered by the user, and replaces spaces with %20 to format it appropriately for the Riot Games API.
     match_data_list = automate_process(summoner_name) # The automate_process function retrieves match data for the specified summoner.
-    """If match data is successfully retrieved, the application calculates the average placement of the summoner and generates HTML to display the match data. This HTML is then rendered using the formatted_output.html template."""
+    #If match data is successfully retrieved, the application calculates the average placement of the summoner and generates HTML to display the match data. This HTML is then rendered using the formatted_output.html template.
     if match_data_list:
         average_placement = calculate_average_placement(match_data_list)
         formatted_output = generate_match_data_html(match_data_list)
@@ -400,7 +402,7 @@ def calculate_average_placement(match_data_list): # This function calculates the
     total_placement = sum(match_data['placement'] for match_data in match_data_list)
     return total_placement / len(match_data_list) if len(match_data_list) > 0 else 0
 
-"""This function generates HTML to display the match data, including placement and images of champions and their equipped items."""
+#This function generates HTML to display the match data, including placement and images of champions and their equipped items.
 def generate_match_data_html(match_data_list):
     output = ''
     for i in range(0, len(match_data_list), 2):
@@ -429,5 +431,5 @@ def generate_champion_image_tags(units, items):
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
-"""This block of code ensures that the Flask application runs when the script is executed directly, with debugging enabled for development purposes."""
+#This block of code ensures that the Flask application runs when the script is executed directly, with debugging enabled for development purposes.
 ```
