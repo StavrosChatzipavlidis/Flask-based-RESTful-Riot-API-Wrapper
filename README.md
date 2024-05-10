@@ -40,6 +40,20 @@ Before running the script, ensure you have an API key from Riot Games. Do not sh
 
 ## Project Prerequisites
 
+```bash
+Python 3
+ |-- Libraries
+ |   |-- requests
+ |   |-- re
+ |   |-- Collections
+ |   |-- | -- Counter
+ |   |-- | -- defaultdict
+ |   |-- flask
+ |   |-- | -- Flask 
+ |   |-- | -- request
+ |   |-- | -- render_template
+```
+
 - Python 3
   - Libraries
     - requests
@@ -52,13 +66,14 @@ Before running the script, ensure you have an API key from Riot Games. Do not sh
         - request
         - render_template
 
-You can install the requests library using pip:
+You can install the requests and flask library using pip:
 
 ```python
 pip install requests
+pip install flask
 ```
 
-You can now use the `requests` library in your Python code to make HTTP requests.
+You can now use the `requests` and 'flask' library in your Python code to make HTTP requests and flask applications.
 
 ## Retrieving Summoner Data
 
