@@ -43,3 +43,16 @@ You can install the Requests library using pip:
 
 ```python
 pip install requests
+
+You can now use the `requests` library in your Python code to make HTTP requests.
+
+## Retrieving Summoner Data
+
+The script retrieves summoner data by following these steps:
+
+1. Acquiring the Summoner PUUID
+ -The function get_summoner_data takes a summoner name as input and queries the Riot Games API to retrieve summoner data.
+ -Replace the placeholder API key in the script with your actual API key obtained from the Riot Games website.
+ -After acquiring the summoner data, the PUUID (Portable Unique ID) is extracted from the response.
+2. Using the Summoner PUUID
+ - The obtained PUUID can be used for further API requests to fetch more specific data about the summoner, such as match history, match details, and more.
