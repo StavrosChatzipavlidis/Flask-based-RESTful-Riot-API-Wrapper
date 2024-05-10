@@ -67,7 +67,7 @@ pip install requests
 pip install flask
 ```
 
-You can now use the `requests` and 'flask' library in your Python code to make HTTP requests and flask applications.
+You can now use the `requests` and `flask` library in your Python code to make HTTP requests and flask applications.
 
 ## Retrieving Summoner Data
 
