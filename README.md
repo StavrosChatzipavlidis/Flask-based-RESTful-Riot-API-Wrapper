@@ -41,6 +41,5 @@ Before running the script, ensure you have an API key from Riot Games. Do not sh
 
 You can install the Requests library using pip:
 
-'''
+```python
 pip install requests
-'''
