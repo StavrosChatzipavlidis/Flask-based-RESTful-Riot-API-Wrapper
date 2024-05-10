@@ -26,3 +26,21 @@ Flask application that integrates with Riot's RESTful API to retrieve the match 
 
 ## Result
 ![Result](./img/result.png)
+
+# TFT Summoner Data Retrieval
+
+These scripts fetches data related to League of Legends (LoL) summoners using the Riot Games API.
+
+## Getting Started
+
+Before running the script, ensure you have an API key from Riot Games. Do not share this API key with anyone.
+
+## Prerequisites
+- Python 3
+- Requests library
+
+You can install the Requests library using pip:
+
+'''
+pip install requests
+'''
