@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match History</title>
+    <style>
+        body {
+            background-image: url('/static/tft1.jpg'); /* Adjust the path to your PNG image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Do not repeat the background image */
+            /* Additional styling as needed */
+            color: white; /* Set text color to white for better visibility */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        .header {
+            text-align: center; /* Center align the header */
+            padding: 20px; /* Add padding to the header */
+            border-top: 3px solid white; /* Add top border with white color */
+            border-bottom: 3px solid white; /* Add bottom border with white color */
+            margin: 50px auto; /* Center the header horizontally */
+            max-width: fit-content; /* Set maximum width to fit content */
+            background-color: transparent; /* Set background color to transparent */
+        }
+
+        h1, p {
+            margin: 0; /* Remove default margin from the heading and paragraph */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ summoner_name }} Match History</h1>
+        <p>Average Placement: {{ average_placement }}</p>
+    </div>
+    <!-- Render HTML content -->
+    {{ formatted_output | safe }}
+</body>
+</html>
