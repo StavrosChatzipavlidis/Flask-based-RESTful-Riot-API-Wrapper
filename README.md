@@ -61,6 +61,8 @@ You can now use the `requests` library in your Python code to make HTTP requests
 
 ## Retrieving Summoner Data
 
+The get-summoner-data function constructs the API URL with the provided summoner name, adds the necessary headers with an API key for authentication, and sends an HTTP GET request to the API endpoint. If the request is successful (status code 200), the function returns the summoner data in JSON format, including the Portable Unique ID (PUUID). Otherwise, it prints an error message and returns None. The provided example usage showcases how to call the function and extract the PUUID from the returned summoner data.
+
 The script retrieves summoner data by following these steps:
 
 1. Acquiring the Summoner PUUID
@@ -69,10 +71,6 @@ The script retrieves summoner data by following these steps:
     - After acquiring the summoner data, the PUUID (Portable Unique ID) is extracted from the response.
 2. Using the Summoner PUUID
     - The obtained PUUID can be used for further API requests to fetch more specific data about the summoner, such as match history, match details, and more.
-
- # get-summoner-data
-
-The get-summoner-data function constructs the API URL with the provided summoner name, adds the necessary headers with an API key for authentication, and sends an HTTP GET request to the API endpoint. If the request is successful (status code 200), the function returns the summoner data in JSON format, including the Portable Unique ID (PUUID). Otherwise, it prints an error message and returns None. The provided example usage showcases how to call the function and extract the PUUID from the returned summoner data.
 
 ```python
 def get_summoner_data(summoner_name):
@@ -92,7 +90,7 @@ summoner_data = get_summoner_data('Ariel%20Ibagaza%207')
 puuid = summoner_data['puuid']
 ```
 
-## get-match-id
+## Retrieving Match ids
 
 The purpose of coding the function to retrieve the IDs of the last 20 matches for a summoner with a specific PUUID is to facilitate the collection of recent match data for integration into our flask app.
 
@@ -115,7 +113,7 @@ We will store the last 20 games to iterate through them for the flask applicatio
 match_ids = get_match_ids(puuid)
 match_id = get_match_ids(puuid)[0]
 ```
-## get-match-data
+## Retrieving Match Data
 
 Using the unique match ID obtained earlier, we can now retrieve the JSON file for a specific match associated with a summoner's PUUID. This allows us to access detailed information about the match, including participants and game events.
 
@@ -139,7 +137,7 @@ def get_match_data(matchid):
 get_match_data(match_id)
 ```
 
-## Finding the Specific Summoner
+## Finding Specific Summoner
 
 In a match with multiple participants, we often need to isolate data specific to a particular summoner. To accomplish this, we iterate through the participants' data and filter based on the summoner's unique ID (PUUID). The following code snippet achieves this:
 
@@ -152,7 +150,7 @@ Here's how it works:
 - Generator Expression: Using (p for p in ... if p['puuid'] == summoner_data['puuid']), we create a generator that iterates over each participant in the match data, filtering them based on their PUUID matching that of the summoner we're interested in.
 - Next Function: The next(...) function retrieves the next item from the generator expression. It returns the first participant whose PUUID matches that of the summoner. If no such participant is found, it returns None.
 
-# Retrieving Active Traits
+## Retrieving Active Traits
 
 Once we've identified the specific participant, we can extract their traits by iterating through their data. For instance, the following code snippet:
 
