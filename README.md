@@ -36,17 +36,21 @@ These scripts fetches data related to League of Legends (LoL) summoners using th
 Before running the script, ensure you have an API key from Riot Games. Do not share this API key with anyone.
 
 ## Project Prerequisites
+
 - Python 3
-- Libraries
- - requests
- - re
- - collections
-  - Counter
-  - defaultdict
- - flask
-  - Flask
-  - request
-  - render_template
+  - Libraries
+    - requests
+    - re
+    - get_match-ids-data-recursive
+    - collections
+        - Counter
+        - defaultdict
+    - index-data.py
+    - parsing-data.py
+    - flask
+        - Flask
+        - request
+        - render_template
 
 You can install the Requests library using pip:
 
