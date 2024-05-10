@@ -98,7 +98,7 @@ summoner_data = get_summoner_data('Ariel%20Ibagaza%207')
 puuid = summoner_data['puuid']
 ```
 
-## Retrieving Match ids
+## Retrieving Match IDs
 
 The purpose of coding the function to retrieve the IDs of the last 20 matches for a summoner with a specific PUUID is to facilitate the collection of recent match data for integration into our flask app.
 
