@@ -435,3 +435,49 @@ if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
 #This block of code ensures that the Flask application runs when the script is executed directly, with debugging enabled for development purposes.
 ```
+
+# Welcome to My Flask Application
+
+You can input a summoner name, and the application will fetch and display various statistics and information about that summoner's recent matches.
+
+## How to Use
+
+1. **Enter the summoner name in the input field below.**
+2. **Click on the "Submit" button to retrieve and display the data.**
+
+## Index Main Body
+
+```html
+<body>
+    <form action="/submit_summoner_name" method="POST">
+        <label for="summoner_name" style="text-align: center;">Summoner Name:</label>
+        <input type="text" id="summoner_name" name="summoner_name" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+```
+
+This HTML code represents the main body of the application's interface. It includes a form where you can input the summoner name and a submit button to trigger the retrieval of data from the backend server.
+
+## Match History Page
+
+On this page, you can view the match history for the summoner "{{ summoner_name }}" along with some additional information.
+
+### Header
+
+```html
+<div class="header">
+    <h1>{{ summoner_name }} Match History</h1>
+    <p>Average Placement: {{ average_placement }}</p>
+</div>
+```
+
+The header section displays the summoner's name and their average placement in matches.
+
+### Match History
+
+```html
+{{ formatted_output | safe }}
+```
+
+This section displays the formatted match history data retrieved from the backend server. It includes details such as placement, champion images, and equipped items for each match.
