@@ -3,24 +3,29 @@ Flask application that integrates with Riot's RESTful API to retrieve the match 
 
 # Project Structure
 
-- project/
-  - api-data-retrieval/
-    - get-summoner-data.py
-    - get-match-data.py
-    - get_match-ids-data-recursive
-  - data_processing/
-    - index-data.py
-    - parsing-data.py
-  - flask-app/
-    - app.py
-    - automate_process.py
-    - templates/
-      - index.html
-      - formatted_output.html
-    - static/
-      - img
-      - items
-- README.md
+```bash
+root/
+ |-- api-data-retrieval/
+ |   |-- get-summoner-data.py
+ |   |-- get-match-data.py
+ |   |-- get-match-ids-data-recursive
+ |-- data processing/
+ |   |-- index-data.py
+ |   |-- parsing-data.py
+ |-- flask-app/
+ |   |-- app.py
+ |   |-- automate_process.py
+ |   |-- templates/
+ |   |-- | -- index.html    
+ |   |-- | -- formatted_output.html
+ |   |-- static/
+ |   |-- | -- img   
+ |   |-- | -- items
+ |   |-- | -- Augments    
+ |   |-- | -- background.png
+ |   |-- | -- background1.png
+
+```
 
 # Project Overview
 
@@ -54,17 +59,6 @@ Python 3
  |   |-- | -- render_template
 ```
 
-- Python 3
-  - Libraries
-    - requests
-    - re
-    - collections
-        - Counter
-        - defaultdict
-    - flask
-        - Flask
-        - request
-        - render_template
 
 You can install the requests and flask library using pip:
 
